@@ -1,0 +1,18 @@
+https://www.quora.com/Is-PostgreSQL-a-distributed-and-scalable-database
+PostgreSQL is not natively distributed. Scalable depends on your needs.
+
+Typically “distributed” means a database that can work as a group of several nodes (instances, servers, etc.) working together. Most relational databases are not built with this architecture and instead focus on being a single server installation.
+
+PostgreSQL is designed to scale vertically by running on bigger and faster servers when you need more performance. Starting with version 9.6, there is better parallel processing so that queries can take advantage of multiple cores on a single machine, which should greatly improve concurrency and performance as CPUs are increasing in cores. Memory and storage are also getting much faster and even mid-level hardware is capable of extreme performance metrics these days.
+
+To scale horizontally, Postgres has decent replication features so you can create multiple replicas that can be used for reading data (not writing), but it does not offer any automatic sharding. This is a middle ground because you can increase the read workload by making extra copies of your data but you can’t spread the data itself across several instances easily. You are still stuck if you need to scale write workloads though.
+
+If you want a distributed version of PostgreSQL where data can be spread across several nodes, and have those nodes use replication for high availability, there are some 3rd party options:
+
+Citus Data - the modern option, this is an extension that can be loaded into postgres to enable distributed architecture with master and worker nodes that automatically shard tables.
+Postgres-XL - a forked version of postgres designed to be distributed and has some other features like MPP.
+Both options above have various tradeoffs so read the documentation. Most queries should work but distributed SQL is very complicated and you’ll will need to carefully model your data.
+
+There are also other relational database systems like MemSQL, VoltDB, CockroachDB, TiDB, Yugabyte, and Google Cloud Spanner that are designed to be distributed and worth a look. Yugabyte and CockroachDB specifically offer a Postgres-compatible interface so I suggest those if you want the closest semantics.
+
+https://www.percona.com/blog/2019/05/24/an-overview-of-sharding-in-postgresql-and-how-it-relates-to-mongodbs/

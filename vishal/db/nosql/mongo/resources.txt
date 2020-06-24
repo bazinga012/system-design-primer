@@ -1,0 +1,7 @@
+https://severalnines.com/blog/turning-mongodb-replica-set-sharded-cluster#:~:text=Since%20replication%20is%20asynchronous%2C%20the,and%20dynamically%20load%2Dbalance%20queries.
+
+https://www.mongodb.com/presentations/webinar-everything-you-need-know-about-sharding
+https://www.mongodb.com/transcript/everything-you-need-know-about-sharding-presentation-transcript
+
+mongos
+https://docs.mongodb.com/manual/core/sharded-cluster-query-router/

@@ -1,0 +1,2 @@
+https://stackoverflow.com/questions/3982501/mutex-lock-what-does-blocking-mean#:~:text=Blocked%20means%20execution%20gets%20stuck,the%20mutex%20before%20it%20can.
+https://docs.python.org/3/library/threading.html
